@@ -1,4 +1,4 @@
-#Budowa cache build
+# Build cache
 FROM node:22-bookworm-slim AS deps
 
 WORKDIR /app
@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm \
     npm ci --ignore-scripts
 
-#Budowa aplikacji
+# Application build
 FROM deps AS builder
 
 COPY tsconfig.json ./
@@ -16,10 +16,10 @@ COPY src ./src
 
 RUN npm run build
 
-#Runtime aplikacji
-FROM gcr.io/distroless/nodejs22-debian12:nonroot AS runtime
+# Application runtime
+FROM gcr.io/distroless/nodejs24-debian12:nonroot AS runtime
 
-# Metadane zgodne z OCI spec
+# OCI spec compliant metadata
 LABEL org.opencontainers.image.title="my-app" \
       org.opencontainers.image.description="Node.js TypeScript App" \
       org.opencontainers.image.authors="Patryk Osiak" \
