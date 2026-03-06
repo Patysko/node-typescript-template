@@ -1,0 +1,62 @@
+# === Zależności ===
+node_modules/
+.npm/
+
+# === Artefakty buildu ===
+dist/
+build/
+*.tsbuildinfo
+
+# === Sekrety i środowisko ===
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+secrets/
+
+# === Testy ===
+tests/
+**/*.test.ts
+**/*.spec.ts
+coverage/
+.nyc_output/
+
+# === Git ===
+.git/
+.gitignore
+.gitattributes
+
+# === Docker (unikamy rekursji) ===
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# === IDE / tooling ===
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# === Docs ===
+README.md
+CHANGELOG.md
+docs/
+
+# === CI/CD ===
+.github/
+.gitlab-ci.yml
+.circleci/
+Jenkinsfile
+
+# === Linter / formatter ===
+.eslintrc*
+eslint.config.*
+.prettierrc*
+.editorconfig
+
+# === TypeScript config (niepotrzebny w runtime) ===
+tsconfig*.json
